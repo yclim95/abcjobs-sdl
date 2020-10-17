@@ -30,10 +30,11 @@ public class LoginAction extends ActionSupport{
 		LoginDAO loginDao = new LoginDAO();
 		numOfRecord = loginDao.validateLoginCreditial(userAccount.getEmail(), userAccount.getPassword());
 		grantLevel = loginDao.getGrantLevel(userAccount.getEmail(), userAccount.getPassword());
-		System.out.println("email" + userAccount.getEmail());
+		System.out.println("Output: " + grantLevel);
 		if (numOfRecord.next())
 		{
-			if (grantLevel == "programmer") 
+			System.out.println("Output: " + grantLevel);
+			if (grantLevel.equals("programmer")) 
 				result =  "success-user";
 			else 
 				result =  "success-admin";
@@ -41,6 +42,8 @@ public class LoginAction extends ActionSupport{
 
 		else
 			result = "error";
+		
+		System.out.println("Result: " + result);
 		
 		return result;
 	}

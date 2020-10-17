@@ -26,7 +26,6 @@ public class LoginDAO {
 	public String getGrantLevel (String email, String password) throws SQLException {
 		String grantLevel  = "";
 		int userID = 0;
-		String emailGet = "";
 		
 		Connection con = Database.getConnection();
 		ResultSet resultSet = null;
@@ -36,12 +35,9 @@ public class LoginDAO {
 			statement.setString(2,password);
 			resultSet = statement.executeQuery();
 			
-			System.out.println ("resultset:" + resultSet.next());
 			while (resultSet.next()) {
 				System.out.println ("userID:" + resultSet.getInt("userID"));
-				System.out.println ("email:" + resultSet.getString("email"));
 				userID = resultSet.getInt("userID");;
-				emailGet = resultSet.getString("email");
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -56,16 +52,16 @@ public class LoginDAO {
 			PreparedStatement statement = con.prepareStatement("SELECT * from user where userID =?");
 			statement.setInt(1,userID);
 			numOfRecord = statement.executeQuery();
-			System.out.println ("NumOfRecord:" + numOfRecord.next());
 			
 			while (numOfRecord.next()) {
 				grantLevel = numOfRecord.getString("grantLevel");
 			}
-System.out.println ("GrantLevel:" + numOfRecord.next());
 
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println ("grantLevel:" + grantLevel);
 		
 		return grantLevel;
 	}
