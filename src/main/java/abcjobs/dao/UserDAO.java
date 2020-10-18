@@ -46,17 +46,17 @@ public class UserDAO {
 
 	}
 	
-	public String getFirstName(String email) throws SQLException {
+	public boolean emailExist (String email) throws SQLException {
 			Connection con = Database.getConnection();
 			ResultSet lastIDQuery = null;
-			String firstName = "";
+			boolean exist = false;
 		try {
-			PreparedStatement statement = con.prepareStatement("SELECT firstName from userAccount where email =?");
+			PreparedStatement statement = con.prepareStatement("SELECT * from userAccount where email =?");
 			statement.setString(1,email);
 			lastIDQuery = statement.executeQuery();
 			
 			if (lastIDQuery.next()) {
-				firstName = lastIDQuery.getString("firstName");
+				exist = true;
 			}
 			
 			
@@ -64,7 +64,23 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		
-		return firstName;
+		return exist;
+	}
+	
+	public int resetPassword(String email, String password) throws SQLException {
+			Connection con = Database.getConnection();
+			int result = 0;
+		try {
+			PreparedStatement statement = con.prepareStatement("UPDATE userAccount set password=? where email =?");
+			statement.setString(1,password);
+			statement.setString(2,email);
+			
+			result = statement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	public int updateUserProfile(String firstName, String lastName, String email, String password,

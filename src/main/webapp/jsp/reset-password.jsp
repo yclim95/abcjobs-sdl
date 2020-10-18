@@ -38,7 +38,7 @@
 	            	
 	                <div class="card card-body mt-4">
 	                    <h4 class = "card-subtitle text-center">Reset Password</h4>
-	                    <form id="callMeForm" data-toggle="validator" data-focus="false">
+	                    <form id="callMeForm" action="reset-password-status" method="post">
 	                        <!-- P A S S W O R D -->
 	                        <div class = "form-group">
 	                            <input type = "password" class = "form-control-input" name = "userAccount.password" id = "password" 
