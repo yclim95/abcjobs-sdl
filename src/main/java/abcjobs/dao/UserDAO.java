@@ -280,8 +280,10 @@ public class UserDAO {
 		
 		ResultSet numOfRecord = null;
 		try {
-			PreparedStatement statement = con.prepareStatement("SELECT * from user where userID <>?");
+			PreparedStatement statement = con.prepareStatement("SELECT * from user where userID <> ? AND"
+					+ " grantLevel = ?");
 			statement.setInt(1,userID);
+			statement.setString(2,"programmer");
 			numOfRecord = statement.executeQuery();
 			userList = new ArrayList<User>();
 			User user;
@@ -317,13 +319,14 @@ public class UserDAO {
 		ResultSet numOfRecord = null;
 		try {
 			PreparedStatement statement = con.prepareStatement("SELECT * from USER WHERE firstName=? OR"
-					+ " lastName=? OR currentCompany=? OR currentJob=? OR city=? OR country=?");
+					+ " lastName=? OR currentCompany=? OR currentJob=? OR city=? OR country=? AND grantLevel=?");
 			statement.setString(1,searchCriteria);
 			statement.setString(2,searchCriteria);
 			statement.setString(3,searchCriteria);
 			statement.setString(4,searchCriteria);
 			statement.setString(5,searchCriteria);
 			statement.setString(6,searchCriteria);
+			statement.setString(7,"programmer");
 			numOfRecord = statement.executeQuery();
 			userList = new ArrayList<User>();
 			User user;

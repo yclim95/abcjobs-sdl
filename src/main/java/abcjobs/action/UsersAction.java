@@ -59,7 +59,8 @@ public class UsersAction extends ActionSupport{
 			result = "users";
 		}
 		else {
-			message = "No other user currently";
+			result = "users";
+			message = "No other registered users currently";
 		}
 
 		return result;

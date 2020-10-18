@@ -116,7 +116,7 @@
                         </s:iterator> <!--  End of displaying users list loop -->
                         </s:if> <!-- End of If for userList -->
                         <s:else>
-                        	<s:property value="message" />
+                        	<p>No other registered users currently</p>
                         </s:else> <!-- If no other users -->
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
