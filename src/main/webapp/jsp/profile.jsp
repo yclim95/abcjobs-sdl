@@ -58,7 +58,7 @@
                         	</div> <!-- endOfCol : Image -->
                       	    <div class="col">
                       	    	<div class="text-right">
-                        			<a href="./profile-update">
+                        			<a href='./profile-update'>
                         				<button type="submit" class="form-control-submit-button-wdefault mb-2">Update Profile</button>
                         			</a>
                        		 	</div>

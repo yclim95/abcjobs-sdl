@@ -32,7 +32,7 @@
                     	<span><i class="far fa-user-circle"></i> <s:property value="firstName" /></span>
                     </a>
                     <div class="hide">
-                    	<a href="./">Logout</a>
+                    	<a href="./logout">Logout</a>
                     </div>
                 </li>
 

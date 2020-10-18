@@ -176,6 +176,80 @@ public class UserDAO {
 		return userList;
 	}
 	
+	
+	public User getUserProfileByEmail(String email){
+		ResultSet resultSet = null;
+		Connection con = Database.getConnection();
+		int userID = 0;
+		
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from userAccount where email=?");
+			statement.setString(1,email);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				System.out.println ("userID:" + resultSet.getInt("userID"));
+				userID = resultSet.getInt("userID");;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	
+		User user = null;
+		ResultSet numOfRecord = null;
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from user where userID =?");
+			statement.setInt(1,userID);
+			numOfRecord = statement.executeQuery();
+			
+			while (numOfRecord.next()) {
+				user = new User();
+				user.setFirstName(numOfRecord.getString("firstName"));
+				user.setLastName(numOfRecord.getString("lastName"));
+				user.setCurrentJob(numOfRecord.getString("currentJob"));
+				user.setCurrentCompany(numOfRecord.getString("currentCompany"));
+				user.setContactNo(numOfRecord.getString("contactNo"));
+				user.setCity(numOfRecord.getString("city"));
+				user.setCountry(numOfRecord.getString("country"));
+				user.setSkills(numOfRecord.getString("skills"));
+				user.setBiography(numOfRecord.getString("biography"));
+				
+			}
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
+	
+	
+	public UserAccount getUserAccount(String email){
+		ResultSet resultSet = null;
+		Connection con = Database.getConnection();
+		int userID = 0;
+		UserAccount userAccount = null;
+		
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from userAccount where email=?");
+			statement.setString(1,email);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				userAccount = new UserAccount();
+				userAccount.setEmail(resultSet.getString("email"));
+				userAccount.setPassword(resultSet.getString("password"));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return userAccount;
+	}
+	
+	
 	public int updateUserProfile(String firstName, String lastName, String email, String password,
 			String currentJob, String contactNo, String biography) throws SQLException {
 			Connection con = Database.getConnection();

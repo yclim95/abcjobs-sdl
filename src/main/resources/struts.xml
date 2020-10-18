@@ -26,6 +26,10 @@
             <result>/jsp/login.jsp</result>
         </action>
         
+        <action name="logout" class="abcjobs.action.LoginAction" method="logout">
+        	<result name="logout">/</result>
+        </action>
+        
         <action name="home-user" class="abcjobs.action.HomeAction" method="execute">
             <result name="home">/jsp/home.jsp</result>
         </action>
@@ -59,20 +63,13 @@
         </action>
         
         
-        <action name="jobs" class="abcjobs.action.JobsAction" method="execute">
-            <result name="jobs">/jsp/jobs.jsp</result>
-        </action>
-        
-        <action name="jobs-search-results" class="abcjobs.action.JobsSearchResultsAction" method="execute">
-            <result name="jobs-search-results">/jsp/jobs-search-results.jsp</result>
-        </action>
         
          <action name="profile" class="abcjobs.action.ProfileAction" method="execute">
             <result name="profile">/jsp/profile.jsp</result>
         </action>
         
-        <action name="profile-update">
-            <result>/jsp/profile-update.jsp</result>
+        <action name="profile-update" class="abcjobs.action.ProfileUpdateAction" method="getPage">
+            <result name="success">/jsp/profile-update.jsp</result>
         </action>
         
         

@@ -59,10 +59,9 @@
    	                        <div class="form-group row">
    	                            <label class="col-sm-2 col-form-label" for="fname">First Name</label>
    	                            <div class="col-sm-10">
-       	                            <input type="text" class="form-control" id="fname" name="user.firstName" 
-       	                            data-toggle="tooltip" data-placement="bottom" 
-	                                title = "Please Fill this. First name must not include number"
-	                                value = "Yao Cheng">
+                              	    <s:textfield name="user.firstName" value="%{user.firstName}" id="fname"
+                              	    cssClass="form-control"
+                              	    data-toggle="tooltip" data-placement="bottom" title = "Please Fill this. First name must not include number" />
    	                            </div>
 	                            <div class="help-block with-errors" id="error-fname"></div>
 	                        </div>
@@ -71,10 +70,10 @@
    	                        <div class="form-group row">
    	                            <label class="col-sm-2 col-form-label" for="userlname">Last Name</label>
    	                            <div class="col-sm-10">
-       	                            <input type="text" class="form-control" id="lname" name="user.lastName" 
+       	                            <s:textfield cssClass="form-control" id="lname" name="user.lastName" 
        	                            data-toggle="tooltip" data-placement="bottom"
 	                                title = "Please Fill this. Last name must not include number"
-	                                value = "Lim">
+	                                value = "%{user.lastName}" />
    	                            </div>
 	                            <div class="help-block with-errors" id="error-lname"></div>
 	                        </div>
@@ -83,8 +82,8 @@
 	                        <div class="form-group row">
    	                            <label class="col-sm-2 col-form-label" for="email">Email</label>
    	                            <div class="col-sm-10">
-       	                            <input type="email" class="form-control" id="email" name="userAccount.email" 
-	                            readonly value ="lyc950421@gmail.com">
+       	                            <s:textfield cssClass="form-control" id="email" name="userAccount.email" 
+	                            value ="%{userAccount.email}" readonly="true"/>
 	                            <div class="help-block with-errors" id="error-email"></div>
    	                            </div>
 	                        </div>
@@ -94,10 +93,10 @@
 	                        <div class = "form-group row">
 	                        	<label class="col-sm-2 col-form-label" for="password">Password</label>
 	                        	<div class="col-sm-10">
-   		                            <input type = "password" class="form-control" name = "userAccount.password" id = "password" 
+   		                            <s:password cssClass="form-control" name = "userAccount.password" id = "password" 
    		                           data-toggle="tooltip" data-placement="bottom"
 	                            title = "Password Must be 16 characters" minlength="16" maxlength="16"
-	                            value="1234567aBc123456">
+	                            value="%{userAccount.password}" showPassword="true"/>
 	                        	</div>                  
 	                            <div class="help-block with-errors" id="error-password"></div>
 	                        </div>
@@ -107,9 +106,9 @@
 	                        <div class = "form-group row">
 	                        	<label class="col-sm-2 col-form-label" for="current-job">Current Job</label>
 	                        	<div class="col-sm-10">
-   		                            <input type = "text" class="form-control" name = "user.currentJob" id = "current-job" 
+   		                            <s:textfield cssClass="form-control" name = "user.currentJob" id = "current-job" 
    		                            data-toggle="tooltip" data-placement="bottom"
-	                            title = "Please fill in">
+	                            title = "Please fill in" value = "%{user.currentJob}" />
 	                        	</div>                  
 	                            <div class="help-block with-errors" id="error-current-job"></div>
 	                        </div>
@@ -118,9 +117,9 @@
 	                        <div class = "form-group row">
 	                        	<label class="col-sm-2 col-form-label" for="contactno">Contact No</label>
 	                        	<div class="col-sm-10">
-   		                            <input type = "text" class="form-control" name = "user.contactNo" id = "contactno" 
+   		                            <s:textfield cssClass="form-control" class="form-control" name = "user.contactNo" id = "contactno" 
    		                            data-toggle="tooltip" data-placement="bottom"
-	                            title = "Please fill in">
+	                            title = "Please fill in" value="%{user.contactNo}" />
 	                        	</div>                  
 	                            <div class="help-block with-errors" id="error-contactno"></div>
 	                        </div>
@@ -129,9 +128,9 @@
 	                        <div class = "form-group row">
 	                        	<label class="col-sm-2 col-form-label" for="biography">Biography</label>
 	                        	<div class="col-sm-10">
-   		                            <textarea class = "form-control" name = "user.biography" id = "biography" 
+   		                            <s:textarea cssClass="form-control" name = "user.biography" id = "biography" 
    		                            data-toggle="tooltip" data-placement="bottom"
-	                            title = "Please fill in" rows="5"> </textarea>
+	                            title = "Please fill in" rows="5" value = "%{user.biography}" />
 	                        	</div>                  
 	                            <div class="help-block with-errors" id="error-biography"></div>
 	                        </div>

@@ -78,5 +78,13 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		loginCredential.put("email", AccountCredential.getEmail());
 		loginCredential.put("firstName", AccountCredential.getFirstName());
 	}
+	
+	public String logout() {
+		loginCredential.remove("email");
+		loginCredential.remove("fistName");
+		loginCredential.invalidate();
+		
+		return "logout";
+	}
 
 }
