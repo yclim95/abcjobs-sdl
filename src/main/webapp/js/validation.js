@@ -317,18 +317,22 @@ function registerValidation(){
 
             if(!checkEmail(email)){
                 emailPrintMsg(errorEmail);
+                event.preventDefault();
             }
 
             if (!checkPasswordLength(password)){
                 passwordLengthErrorMsg(errorPassword);
+                event.preventDefault();
             }
             
             if (!checkPasswordLength(confirmedPassword)){
                 passwordLengthErrorMsg(errorCnfPassword);
+                event.preventDefault();
             }
             
             if(!checkConfirmedPassword(confirmedPassword,password)){
             	randomeErrorMsg(errorCnfPassword,"Password must match Confirmed Password!");
+            	event.preventDefault();
             }
 
 		}
@@ -405,10 +409,12 @@ function loginValidation(){
 
             if(!checkEmail(email)){
                 emailPrintMsg(errorEmail);
+                event.preventDefault();
             }
 
             if (!checkPasswordLength(password)){
                 passwordLengthErrorMsg(errorPassword);
+                event.preventDefault();
             }
 
 		}
@@ -652,14 +658,17 @@ function updateProfileValidation(){
 
             if(!checkEmail(email)){
                 emailPrintMsg(errorEmail);
+                event.preventDefault();
             }
 
             if (!checkPasswordLength(password)){
                 passwordLengthErrorMsg(errorPassword);
+                event.preventDefault();
             }
             
             if (!checkPasswordLength(confirmedPassword)){
                 passwordLengthErrorMsg(errorCnfPassword);
+                event.preventDefault();
             }
   
 		}
@@ -672,7 +681,7 @@ function updateProfileValidation(){
 
 
 /* 
-	Register Validation
+	Forget Validation
 */
 function forgetPasswordValidation(){
 	var email= 'email';
@@ -714,6 +723,7 @@ function forgetPasswordValidation(){
 
             if(!checkEmail(email)){
                 emailPrintMsg(errorEmail);
+                event.preventDefault();
             }
 
 		}
@@ -786,19 +796,22 @@ function resetPasswordValidation(){
 
             if (!checkPasswordLength(password)){
                 passwordLengthErrorMsg(errorPassword);
+                event.preventDefault();
             }
             
             if (!checkPasswordLength(confirmedPassword)){
                 passwordLengthErrorMsg(errorCnfPassword);
+                event.preventDefault();
             }
             
             if(!checkConfirmedPassword(confirmedPassword,password)){
             	randomeErrorMsg(errorCnfPassword,"Password must match Confirmed Password!");
+            	event.preventDefault();
             }
 
 		}
 		else{
-		window.location.replace('thankyou');
+		window.location.replace('reset-password-status');
 		}
 		
 	}); // End of Validation for register

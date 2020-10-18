@@ -2,6 +2,7 @@ package abcjobs.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import abcjobs.AccountCredential;
 import abcjobs.dao.UserDAO;
 import abcjobs.model.UserAccount;
 
@@ -21,12 +22,16 @@ public class ForgetPasswordAction extends ActionSupport{
 		// TODO Auto-generated method stub\
 		System.out.println("Forget Password Action");
 		String result = "";
-		boolean emailExist;
+		boolean emailExist = false;
 		UserDAO userDao = new UserDAO();
-		emailExist = userDao.emailExist(userAccount.getEmail());
+		if (userAccount != null)
+			emailExist = userDao.emailExist(userAccount.getEmail());
 		
 		if (emailExist)
+		{
 			result = "success";
+			AccountCredential.setEmail(userAccount.getEmail());
+		}
 		else
 			result = "error";
 		

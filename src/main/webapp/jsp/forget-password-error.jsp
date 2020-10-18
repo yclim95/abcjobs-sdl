@@ -32,7 +32,7 @@
 	        <div class="row">
 	            <div class="col-sm-12 col-md-4 offset-md-4">
 	                <div class="card card-body">
-	                    <h4 class = "card-subtitle text-center with-errors">Email does not exist.</h4>	
+	                    <h4 class = "card-subtitle text-center with-errors">Email does not exist or not valid</h4>	
 	                    <a href="./forget-password">
 	                    <button type="submit" class="form-control-submit-button-outline">Forget Password?</button>
 	                    </a>
