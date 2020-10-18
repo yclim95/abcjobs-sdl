@@ -17,7 +17,7 @@ import abcjobs.model.UserAccount;
 public class LoginAction extends ActionSupport implements SessionAware{
 	private UserAccount userAccount;	
 	private User user;
-	SessionMap<String,String> loginCredential;
+	SessionMap<String,Object> loginCredential;
 
 	public UserAccount getUserAccount() {
 		return userAccount;
@@ -57,6 +57,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 				firstName = userDAO.getFirstName(userAccount.getEmail());
 				AccountCredential.setFirstName(firstName);
 				AccountCredential.setEmail(userAccount.getEmail());
+				loginCredential.put("email", userAccount.getEmail());
+				loginCredential.put("firstName", firstName);
 			}
 			else 
 				result =  "success-admin";
@@ -72,17 +74,15 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	}
 
 	@Override
-	public void setSession(Map map) {
+	public void setSession(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		loginCredential = (SessionMap)map;
-		loginCredential.put("email", AccountCredential.getEmail());
-		loginCredential.put("firstName", AccountCredential.getFirstName());
 	}
-	
+		
 	public String logout() {
-		loginCredential.remove("email");
-		loginCredential.remove("fistName");
-		loginCredential.invalidate();
+		if (loginCredential != null) {
+			loginCredential.invalidate();
+		}
 		
 		return "logout";
 	}
