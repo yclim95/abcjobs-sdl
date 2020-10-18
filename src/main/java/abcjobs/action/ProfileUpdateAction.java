@@ -55,7 +55,8 @@ public class ProfileUpdateAction extends ActionSupport{
 		int result = 0;
 		UserDAO userDao = new UserDAO();
 		result = userDao.updateUserProfile(user.getFirstName(), user.getLastName(), userAccount.getEmail(),
-				userAccount.getPassword(), user.getCurrentJob(), user.getContactNo(), user.getBiography());
+				userAccount.getPassword(), user.getCurrentJob(), user.getContactNo(), user.getBiography(),
+				user.getCurrentCompany(), user.getCity(), user.getCountry(), user.getSkills());
 		
 		if (result != 0)
 			return "success";

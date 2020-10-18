@@ -251,7 +251,8 @@ public class UserDAO {
 	
 	
 	public int updateUserProfile(String firstName, String lastName, String email, String password,
-			String currentJob, String contactNo, String biography) throws SQLException {
+			String currentJob, String contactNo, String biography, String currentCompany,
+			String city, String country, String skills) throws SQLException {
 			Connection con = Database.getConnection();
 			ResultSet lastIDQuery = null;
 			int result = 0;
@@ -265,14 +266,19 @@ public class UserDAO {
 				userID = lastIDQuery.getInt("userID");
 			}
 			
-			String sqlInsert = "UPDATE user set firstName=?, lastName=?, currentJob=?, contactNo=?, biography=? WHERE userID=?";
+			String sqlInsert = "UPDATE user set firstName=?, lastName=?, currentJob=?, contactNo=?, biography=?,"
+					+ "currentCompany=?, city=?, country=?, skills=? WHERE userID=?";
 			statement = con.prepareStatement(sqlInsert);
 			statement.setString(1,firstName);
 			statement.setString(2,lastName);
 			statement.setString(3,currentJob);
 			statement.setString(4,contactNo);
 			statement.setString(5,biography);
-			statement.setInt(6,userID);
+			statement.setString(6,currentCompany);
+			statement.setString(7,city);
+			statement.setString(8,country);
+			statement.setString(9,skills);
+			statement.setInt(10,userID);
 			
 			result = statement.executeUpdate();
 		} catch (Exception e) {

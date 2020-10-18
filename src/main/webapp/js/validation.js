@@ -547,16 +547,24 @@ function updateProfileValidation(){
 	var email= 'email';
 	var password= 'password';
 	var currentJob = "current-job";
+	var currentCompany = "current-company";
 	var contactNo = "contactno";
 	var biography = "biography";
+	var city = "city";
+	var country = "country";
+	var skills = "skills";
 
 	var errorFName = 'error-fname';
 	var errorLName= 'error-lname';
 	var errorEmail= 'error-email';
 	var errorPassword= 'error-password';
 	var errorCurrentJob='error-current-job';
+	var errorCurrentCompany = 'error-current-company';
 	var errorContactNo = "error-contactno";
 	var errorBiography = "error-biography";
+	var errorCity = "error-city";
+	var errorCountry = "error-country";
+	var errorSkills = "error-skills";
 	
 
 	var dataString = "";
@@ -614,6 +622,24 @@ function updateProfileValidation(){
 		}
 	});
 	
+		$( '#city' ).keydown(function(e) {
+		if (!checkalpha(e)){
+			alphaErrorMsg(errorCity);
+		}else{
+			randomeErrorMsg(errorCity,"");
+		}
+	});
+	
+	
+		$( '#country' ).keydown(function(e) {
+		if (!checkalpha(e)){
+			alphaErrorMsg(errorCountry);
+		}else{
+			randomeErrorMsg(errorCountry,"");
+		}
+	});
+	
+	
 	
 	$( '#current-job' ).keydown(function(e) {
 		if (!checkalpha(e)){
@@ -645,7 +671,8 @@ function updateProfileValidation(){
 
 
         if(checkBlank(fname) || checkBlank(lname) || checkBlank(email) || checkBlank(password) ||
-        checkBlank(currentJob) ||checkBlank(contactNo) || checkBlank(biography))
+        checkBlank(currentJob) ||checkBlank(currentCompany) || checkBlank(contactNo) || checkBlank(city) ||
+        checkBlank(country))
         {
         	event.preventDefault();
            blankErrorMsg(fname,errorFName);
@@ -654,7 +681,9 @@ function updateProfileValidation(){
            blankErrorMsg(password,errorPassword);
            blankErrorMsg(currentJob,errorCurrentJob);
            blankErrorMsg(contactNo,errorContactNo);
-        	blankErrorMsg(biography,errorBiography);
+    		blankErrorMsg(currentCompany,errorCurrentCompany);
+    		blankErrorMsg(city,errorCity);
+    		blankErrorMsg(country,errorCountry);
 
             if(!checkEmail(email)){
                 emailPrintMsg(errorEmail);
@@ -668,7 +697,7 @@ function updateProfileValidation(){
             
             if (!checkPasswordLength(confirmedPassword)){
                 passwordLengthErrorMsg(errorCnfPassword);
-                event.preventDefault();
+               	event.preventDefault();
             }
   
 		}

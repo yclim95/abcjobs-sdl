@@ -748,21 +748,12 @@ input[type='checkbox'] {
 
 
 /*********************/
-/*    04. About Us Page     */
+/*    04. Profile Page     */
 /*********************/
-
-
-
-/*********************/
-/*    05. Contact Us Page     */
-/*********************/
-
-
-
-/*********************/
-/*    06. Privacy Policy Page     */
-/*********************/
-
+.profile {
+	min-width: 150px !important; 
+	max-width: 250px !important;
+}
 
 
 /*********************/

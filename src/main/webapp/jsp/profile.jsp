@@ -54,7 +54,7 @@
                     <s:iterator value="userList">
                         <div class="row">
                         	<div class="col">
-                        		<img src="./img/YC-Lim.jpg" alt="profile" class="img-fluid rounded-circle">
+                        		<img src="./img/users.png" alt="profile" class="rounded-circle profile">
                         	</div> <!-- endOfCol : Image -->
                       	    <div class="col">
                       	    	<div class="text-right">
@@ -80,8 +80,19 @@
                         	</div>  <!-- endOfCol : Profile Update -->
                         </div>  <!-- End of row: Profile -->
                         
+                        <!-- Card: Skills -->
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h3 class="card-title text-uppercase">Skills</h3>
+                                <p class="card-text">
+									<span id="skills"> <s:property value="skills" /></span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- end of card -->
+                        
                         <!-- Card: Biography -->
-                        <div class="card">
+                        <div class="card mt-3">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase">biography</h3>
                                 <p class="card-text">

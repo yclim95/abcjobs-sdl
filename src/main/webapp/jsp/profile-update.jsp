@@ -101,6 +101,17 @@
 	                            <div class="help-block with-errors" id="error-password"></div>
 	                        </div>
 	                        
+   	                        <!-- Current Company -->
+	                        <div class = "form-group row">
+	                        	<label class="col-sm-2 col-form-label" for="current-company">Current Company</label>
+	                        	<div class="col-sm-10">
+   		                            <s:textfield cssClass="form-control" name = "user.currentCompany" id = "current-company" 
+   		                            data-toggle="tooltip" data-placement="bottom"
+	                            title = "Please fill in" value = "%{user.currentCompany}" />
+	                        	</div>                  
+	                            <div class="help-block with-errors" id="error-current-company"></div>
+	                        </div>
+	                        
 	                        
    	                        <!-- Current Job -->
 	                        <div class = "form-group row">
@@ -124,20 +135,53 @@
 	                            <div class="help-block with-errors" id="error-contactno"></div>
 	                        </div>
 	                        
+	                         <!-- Country -->
+	                        <div class = "form-group row">
+	                        	<label class="col-sm-2 col-form-label" for="country">Country</label>
+	                        	<div class="col-sm-10">
+   		                            <s:textfield cssClass="form-control" name = "user.country" id = "country" 
+   		                            data-toggle="tooltip" data-placement="bottom"
+	                            title = "Please fill in" value = "%{user.country}" />
+	                        	</div>                  
+	                            <div class="help-block with-errors" id="error-country"></div>
+	                        </div>
+	                        
+                        	<!-- City -->
+	                        <div class = "form-group row">
+	                        	<label class="col-sm-2 col-form-label" for="city">City</label>
+	                        	<div class="col-sm-10">
+   		                            <s:textfield cssClass="form-control" name = "user.city" id = "city" 
+   		                            data-toggle="tooltip" data-placement="bottom"
+	                            title = "Please fill in" value = "%{user.city}" />
+	                        	</div>                  
+	                            <div class="help-block with-errors" id="error-city"></div>
+	                        </div>
+	                        
+	                         <!-- Skills -->
+	                        <div class = "form-group row">
+	                        	<label class="col-sm-2 col-form-label" for="skills">Skills</label>
+	                        	<div class="col-sm-10">
+   		                            <s:textfield cssClass="form-control" name = "user.skills" id = "skills" 
+   		                            data-toggle="tooltip" data-placement="bottom"
+	                            title = "Skills you have" value = "%{user.skills}" />
+	                        	</div>                  
+	                            <div class="help-block with-errors" id="error-skills"></div>
+	                        </div>
+	                        
 	                       <!-- Biography -->
 	                        <div class = "form-group row">
 	                        	<label class="col-sm-2 col-form-label" for="biography">Biography</label>
 	                        	<div class="col-sm-10">
    		                            <s:textarea cssClass="form-control" name = "user.biography" id = "biography" 
    		                            data-toggle="tooltip" data-placement="bottom"
-	                            title = "Please fill in" rows="5" value = "%{user.biography}" />
+	                            title = "Biography of yourself" rows="5" value = "%{user.biography}" />
 	                        	</div>                  
 	                            <div class="help-block with-errors" id="error-biography"></div>
 	                        </div>
 	
 	
 	                        <div class="form-group">
-	                            <button type="submit" class="form-control-submit-button" id="submit" value="Update Profile">Update Profile</button>
+	                        	<s:submit  value="Update Profile Page" cssClass="form-control-submit-button"  id="submit"/>
 	                        </div>
 	                        <div class="form-message">
 	                            <div id="lmsgSubmit" class="h3 text-center hidden"></div>
