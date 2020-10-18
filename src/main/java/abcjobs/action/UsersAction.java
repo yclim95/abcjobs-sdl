@@ -52,7 +52,7 @@ public class UsersAction extends ActionSupport{
 		UserDAO userDAO = new UserDAO();
 		String result = "";
 		
-		userList = userDAO.getPublicUserProfile((String)session.getAttribute("email"));
+		userList = userDAO.getListOfUser((String)session.getAttribute("email"));
 		if (userList != null)
 		{
 			firstName = (String)session.getAttribute("firstName");

@@ -471,7 +471,6 @@ function searchUsersValidation(){
         	window.location.replace('users-search-results');
         }
     
-    	return false;
 	}); // End of Validation for Search users results
 };
 

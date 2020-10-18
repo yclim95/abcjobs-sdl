@@ -32,7 +32,7 @@
         <div id="course-section" class="card-users">
             <div class="container">
             	<div class="row pb-3">
-           			<form class="form-inline search-user" ACTION="./users-search-results" METHOD="post">
+           			<form class="form-inline search-user" ACTION="users-search-results" METHOD="post">
             	
             		<div class="col-xs-8">
 						  <label class="sr-only" for="inlineFormInputGroupUsername2">Search users</label>

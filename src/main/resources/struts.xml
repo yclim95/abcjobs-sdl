@@ -59,7 +59,8 @@
         </action>
         
          <action name="users-search-results" class="abcjobs.action.UsersSearchResultAction" method="execute">
-            <result name="users-search-results">/jsp/users-search-results.jsp</result>
+            <result name="success">/jsp/users-search-results.jsp</result>
+            <result name="error">/jsp/users-search-results.jsp</result>
         </action>
         
         

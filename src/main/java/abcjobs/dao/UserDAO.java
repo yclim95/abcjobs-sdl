@@ -256,7 +256,7 @@ public class UserDAO {
 		return user;
 	}
 	
-	public List<User> getPublicUserProfile(String email){
+	public List<User> getListOfUser(String email){
 		ResultSet resultSet = null;
 		List<User> userList = null;
 		Connection con = Database.getConnection();
@@ -282,6 +282,48 @@ public class UserDAO {
 		try {
 			PreparedStatement statement = con.prepareStatement("SELECT * from user where userID <>?");
 			statement.setInt(1,userID);
+			numOfRecord = statement.executeQuery();
+			userList = new ArrayList<User>();
+			User user;
+			
+			while (numOfRecord.next()) {
+				user = new User();
+				user.setUserID(numOfRecord.getInt("userID"));
+				user.setFirstName(numOfRecord.getString("firstName"));
+				user.setLastName(numOfRecord.getString("lastName"));
+				user.setCurrentJob(numOfRecord.getString("currentJob"));
+				user.setCurrentCompany(numOfRecord.getString("currentCompany"));
+				user.setContactNo(numOfRecord.getString("contactNo"));
+				user.setCity(numOfRecord.getString("city"));
+				user.setCountry(numOfRecord.getString("country"));
+				user.setSkills(numOfRecord.getString("skills"));
+				user.setBiography(numOfRecord.getString("biography"));
+				
+				userList.add(user); // Add data to populate 
+			}
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userList;
+	}
+	
+	
+	public List<User> getListOfUserByCriteria(String searchCriteria){
+		List<User> userList = null;
+		Connection con = Database.getConnection();
+			
+		ResultSet numOfRecord = null;
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from USER WHERE firstName=? OR"
+					+ " lastName=? OR currentCompany=? OR currentJob=? OR city=? OR country=?");
+			statement.setString(1,searchCriteria);
+			statement.setString(2,searchCriteria);
+			statement.setString(3,searchCriteria);
+			statement.setString(4,searchCriteria);
+			statement.setString(5,searchCriteria);
+			statement.setString(6,searchCriteria);
 			numOfRecord = statement.executeQuery();
 			userList = new ArrayList<User>();
 			User user;

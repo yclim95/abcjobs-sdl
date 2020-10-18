@@ -80,8 +80,8 @@
                     <div class="col-lg-10 col-xs-12">
                         <h2 class="text-left">Search results</h2>
                         <p>
-                        	<span>1 </span> record match:
-                        	<span> Ivan Chia</span>
+                        	<span><s:property value="message" /></span>
+                        	
                         </p>
                    	<s:if test="userList">
                         <s:iterator value="userList">
