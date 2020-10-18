@@ -43,6 +43,7 @@
         
         <action name="reset-password" class="abcjobs.action.ForgetPasswordAction" method="execute">
         	<result name="success">/jsp/reset-password.jsp</result>
+        	<result name="error">/jsp/forget-password-error.jsp</result>
         </action>
         
         <action name="reset-password-status" class="abcjobs.action.ResetPasswordAction" method="execute">
