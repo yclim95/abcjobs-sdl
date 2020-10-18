@@ -13,30 +13,40 @@ function checkPath(pathname){
 	if(!pathname) pathname = window.location.pathname;
 	    console.log(window.location.pathname);
 	
-		if (pathname == "/mini03/register")
+		if (pathname == "/abcjobs/register")
 	{
 		registerValidation();
 	}
 	
-		else if (pathname == "/mini03/login")
+		else if (pathname == "/abcjobs/login")
 	{
 		loginValidation();
 	}
 	
 	
-		else if (pathname == "/mini03/users")
+		else if (pathname == "/abcjobs/users")
 	{
 		searchUsersValidation();
 	}
 	
-		else if (pathname == "/mini03/jobs")
+		else if (pathname == "/abcjobs/jobs")
 	{
 		searchJobsValidation();
 	}
 	
-		else if (pathname == "/mini03/profile-update")
+		else if (pathname == "/abcjobs/profile-update")
 	{
 		updateProfileValidation();
+	}
+	
+		else if (pathname == "/abcjobs/forget-password")
+	{
+		forgetPasswordValidation();
+	}
+	
+		else if (pathname == "/abcjobs/reset-password")
+	{
+		resetPasswordValidation();
 	}
 	
 	
@@ -658,4 +668,138 @@ function updateProfileValidation(){
 		}
 		
 	}); // End of Validation for Update Profile
+};
+
+
+/* 
+	Register Validation
+*/
+function forgetPasswordValidation(){
+	var email= 'email';
+
+	var errorEmail= 'error-email';
+	
+
+	/*
+	ACTION TAKEN ONCE A CERTAIN EVENT TRIGGER 
+	*/
+
+	$( '#email' ).keydown(function() {
+		if (!checkEmail(email)){
+			emailPrintMsg(errorEmail);
+		}else{
+			randomeErrorMsg(errorEmail,"");
+		}
+	});
+
+	$( '#email' ).keyup(function() {
+		if (!checkEmail(email)){
+			emailPrintMsg(errorEmail);
+		}else{
+			randomeErrorMsg(errorEmail,"");
+		}
+	});
+
+
+
+		/*
+	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
+	*/
+    $("#submit").click(function(event){
+
+        if(checkBlank(email))
+        {
+        	event.preventDefault();
+            blankErrorMsg(email,errorEmail);
+
+            if(!checkEmail(email)){
+                emailPrintMsg(errorEmail);
+            }
+
+		}
+		else{
+		window.location.replace('reset-password');
+		}
+		
+	}); // End of Validation for Forget Password
+};
+
+
+function resetPasswordValidation(){
+	var password= 'password';
+	var confirmedPassword = "confirmed-password";
+
+	var errorPassword= 'error-password';
+	var errorCnfPassword='error-confirmed-password';
+		
+
+	/*
+	ACTION TAKEN ONCE A CERTAIN EVENT TRIGGER 
+	*/
+
+	$( '#password' ).keydown(function() {
+		if (!checkPasswordLength(password)){
+			passwordLengthErrorMsg(errorPassword);
+		}else{
+			randomeErrorMsg(errorPassword,"");
+		}
+	});
+
+	$( '#password' ).keyup(function() {
+		if (!checkPasswordLength(password)){
+			passwordLengthErrorMsg(errorPassword);
+		}else{
+			randomeErrorMsg(errorPassword,"");
+		}
+	});
+	
+	$( '#confirmed-password' ).keydown(function() {
+		if (!checkPasswordLength(confirmedPassword)){
+			passwordLengthErrorMsg(errorCnfPassword);
+		}else{
+			randomeErrorMsg(errorCnfPassword,"");
+		}
+	});
+
+	$( '#confirmed-password' ).keyup(function() {
+		if (!checkPasswordLength(confirmedPassword)){
+			passwordLengthErrorMsg(errorCnfPassword);
+		}else{
+			randomeErrorMsg(errorCnfPassword,"");
+		}
+	});
+	
+
+
+
+		/*
+	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
+	*/
+    $("#submit").click(function(event){
+
+        if(checkBlank(password) || checkBlank(confirmedPassword)
+        || !checkConfirmedPassword(confirmedPassword,password))
+        {
+        	event.preventDefault();
+            blankErrorMsg(password,errorPassword);
+            blankErrorMsg(confirmedPassword,errorCnfPassword);
+
+            if (!checkPasswordLength(password)){
+                passwordLengthErrorMsg(errorPassword);
+            }
+            
+            if (!checkPasswordLength(confirmedPassword)){
+                passwordLengthErrorMsg(errorCnfPassword);
+            }
+            
+            if(!checkConfirmedPassword(confirmedPassword,password)){
+            	randomeErrorMsg(errorCnfPassword,"Password must match Confirmed Password!");
+            }
+
+		}
+		else{
+		window.location.replace('thankyou');
+		}
+		
+	}); // End of Validation for register
 };

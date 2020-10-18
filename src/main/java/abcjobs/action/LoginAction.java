@@ -8,8 +8,7 @@ import abcjobs.dao.LoginDAO;
 import abcjobs.model.UserAccount;
 
 public class LoginAction extends ActionSupport{
-	private UserAccount userAccount;
-	
+	private UserAccount userAccount;	
 
 	public UserAccount getUserAccount() {
 		return userAccount;
@@ -18,7 +17,6 @@ public class LoginAction extends ActionSupport{
 	public void setUserAccount(UserAccount userAccount) {
 		this.userAccount = userAccount;
 	}
-
 
 	@Override
 	public String execute() throws Exception {
@@ -42,6 +40,7 @@ public class LoginAction extends ActionSupport{
 
 		else
 			result = "error";
+			
 		
 		System.out.println("Result: " + result);
 		

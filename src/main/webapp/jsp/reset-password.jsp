@@ -41,16 +41,18 @@
 	                    <form id="callMeForm" data-toggle="validator" data-focus="false">
 	                        <!-- P A S S W O R D -->
 	                        <div class = "form-group">
-	                            <input type = "password" class = "form-control-input" name = "renew-password" id = "renew-password" required
-	                            title = "Password Must be 16 characters" minlength="16" maxlength="16">
+	                            <input type = "password" class = "form-control-input" name = "userAccount.password" id = "password" 
+	                             data-toggle="tooltip" data-placement="bottom"  title = "Password Must be 16 characters"
+	                             minlength="16" maxlength="16">
 	                            <label class="label-control" for="password">New Password</label>
 	                            <div class="help-block with-errors" id="error-password"></div>
 	                        </div>
 	
 	                        <!-- C O N F I R M E D  P A S S W O R D -->
 	                        <div class = "form-group">
-	                            <input type = "password" class = "form-control-input" name = "confirmed-renew-password" id = "confirmed-renew-password" required
-	                            title = "Password Must be 16 characters" minlength="16" maxlength="16">
+	                            <input type = "password" class = "form-control-input" name = "confirmed-password" id = "confirmed-password" 
+	                            title = "Password Must be 16 characters" minlength="16" maxlength="16"
+	                            data-toggle="tooltip" data-placement="bottom"  title = "Password Must be 16 characters">
 	                            <label class="label-control" for="confirmed-password">Confirmed New Password</label>
 	                            <div class="help-block with-errors" id="error-confirmed-password"></div>
 	                        </div>

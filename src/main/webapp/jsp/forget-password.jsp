@@ -41,8 +41,8 @@
 	                    <form id="callMeForm" data-toggle="validator" data-focus="false" ACTION="reset-password" METHOD="POST">
 	                    	<!-- EMAIL -->
 	                        <div class="form-group">
-	                            <input type="email" class="form-control-input" id="email" name="email" required
-	                            title = "Please Fill Your Email. Must be in this form
+	                            <input type="email" class="form-control-input" id="email" name="userAccount.email" 
+	                            data-toggle="tooltip" data-placement="bottom"  title = "Please Fill Your Email. Must be in this form
 	                            xxx@xxxxx.xxx or xxx@xxxxx.xxx.xx">
 	                            <label class="label-control" for="email">Email Address</label>
 	                            <div class="help-block with-errors" id="error-email"></div>

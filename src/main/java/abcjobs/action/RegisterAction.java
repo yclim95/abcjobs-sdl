@@ -36,11 +36,17 @@ public class RegisterAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		System.out.println("Register Action");
-
+		String result = "";
 		UserDAO userDao=new UserDAO();
-		userDao.addUserAccount(user.getFirstName(), user.getLastName(),
+		boolean registrationValid = userDao.addUserAccount(user.getFirstName(), user.getLastName(),
 				userAccount.getEmail(), userAccount.getPassword());
-		return "success";
+		
+		if (registrationValid)
+			result = "success";
+		else
+			result = "error";
+		
+		return result;
 	}
 	
 }

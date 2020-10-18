@@ -19,6 +19,7 @@
         
         <action name="thankyou" class="abcjobs.action.RegisterAction" method="execute">
         	<result name="success">/jsp/thankyou.jsp</result>
+        	<result name="error">/jsp/register-error.jsp</result>
         </action>
         
         <action name="login">

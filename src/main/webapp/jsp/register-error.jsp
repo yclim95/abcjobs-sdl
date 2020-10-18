@@ -17,7 +17,7 @@
 	<meta property="og:title" content="ABC JOBS -  Your doorstep to start your career and networking platform"/> <!-- title shown in the actual shared post -->
 	<meta property="og:description" content="ABC Jobs is a platform to start your career and professional networking" /> <!-- description shown in the actual shared post -->
 	<meta property="og:type" content="article" />
-	<title>ABC JOBS | LOGIN</title>
+	<title>ABC JOBS | REGISTER ERROR</title>
 
     <!-- Styles -->
     <%@ include file="./head.jsp" %>  
@@ -32,9 +32,9 @@
 	        <div class="row">
 	            <div class="col-sm-12 col-md-4 offset-md-4">
 	                <div class="card card-body">
-	                    <h4 class = "card-subtitle text-center with-errors">Login Credentials (email / password) is incorrect</h4>	
-	                    <a href="./login">
-	                    <button type="submit" class="form-control-submit-button-outline">Login</button>
+	                    <h4 class = "card-subtitle text-center with-errors">Email Account is taken.</h4>	
+	                    <a href="./register">
+	                    <button type="submit" class="form-control-submit-button-outline">Register</button>
 	                    </a>
 	
 	                </div> <!--End of Card-->
