@@ -83,30 +83,41 @@
                         	<span>1 </span> record match:
                         	<span> Ivan Chia</span>
                         </p>
+                   	<s:if test="userList">
+                        <s:iterator value="userList">
                         <!-- Card -->
                         <div class="card">
                             <div class="card-image">
-                                <img class="img-fluid" src="./img/ivan-chia.jpg" alt="HTML & CSS">
+                                <img class="img-fluid" src="./img/users.png" alt="user profile image">
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title text-uppercase">Ivan Chia</h3>
+                                <h3 class="card-title text-uppercase"><s:property value="firstName" /> <s:property value="lastName" /></h3>
                                 <ul class="list-unstyled li-space-lg">
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body text-capitalize">Software Engineer</div>
-                                    </li>
-                                    <li class="media">
-                                        <i class="fas fa-square"></i>
-                                        <div class="media-body text-capitalize">Ignenious Lab</div>
-                                    </li>
+                            	   <s:if test="currentJob != ''">
+	                                    <li class="media">
+	                                        <i class="fas fa-square"></i>
+	                                        <div class="media-body text-capitalize"><s:property value="currentJob" /></div>
+	                                    </li>
+                                    </s:if> <!-- If currentJob exist -->
+                                    <s:if test="currentCompany != ''">
+	                                    <li class="media">
+	                                        <i class="fas fa-square"></i>
+	                                        <div class="media-body text-capitalize"><s:property value="currentCompany" /></div>
+	                                    </li>
+                                    </s:if> <!-- If currentJob exist -->
                                 </ul>
                             </div>
                             <div class="button-container">
-                                <a class="btn-solid-reg page-scroll" href="./public-profile" >VIEW PROFILE</a>
+                                <a class="btn-solid-reg page-scroll" href="./public-profile?user.userID=<s:property value='userID' />" >VIEW PROFILE</a>
                             </div> <!-- end of button-container -->
                         </div>
                         <!-- end of card -->
 
+                        </s:iterator> <!--  End of displaying users list loop -->
+                        </s:if> <!-- End of If for userList -->
+                        <s:else>
+                        	<s:property value="message" />
+                        </s:else> <!-- If no other users -->
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
                 

@@ -1,6 +1,7 @@
 package abcjobs.model;
 
 public class User {
+	private int userID;
 	private String firstName;
 	private String lastName;
 	private String contactNo;
@@ -11,6 +12,12 @@ public class User {
 	private String city;
 	private String country;
 	
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

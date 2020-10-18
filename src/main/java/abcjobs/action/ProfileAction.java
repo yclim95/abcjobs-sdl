@@ -43,8 +43,10 @@ public class ProfileAction extends ActionSupport{
 		userList = userDAO.getUserProfile((String)session.getAttribute("email"));
 		
 		if (userList != null)
+		{
 			firstName = (String)session.getAttribute("firstName");
 			result = "profile";
+		}
 		
 		return result;
 	}

@@ -439,7 +439,6 @@ function searchUsersValidation(){
 
 	var errorSearchUsers= 'error-searchUsers';	
 
-	var dataString = "";
 	
 
 	/*
@@ -469,74 +468,14 @@ function searchUsersValidation(){
 		// Perform the following when the above VALIDATIONS are PASSED.
         else
         {
-
-			var searchUsersVal=$("#searchUsers").val();
-			dataString = 'searchUsers=' + searchUsersVal;
-            $.ajax({
-            type:"POST",
-            url:"./users-search-results",
-            data:dataString,
-            cache:false
-        });
-    }
+        	window.location.replace('users-search-results');
+        }
+    
     	return false;
 	}); // End of Validation for Search users results
 };
 
 
-
-/* 
-	Search jobs Validation
-*/
-function searchJobsValidation(){
-	var searchJobs= 'searchJobs';
-
-	var errorSearchJobs= 'error-searchJobs';	
-
-	var dataString = "";
-	
-
-	/*
-	ACTION TAKEN ONCE A CERTAIN EVENT TRIGGER 
-	*/
-	
-	
-	$( '#searchJobs' ).keydown(function(e) {
-		if (!checkalpha(e)){
-			alphaErrorMsg(errorSearchJobs);
-		}else{
-			randomeErrorMsg(errorSearchJobs,"");
-		}
-	});
-
-
-	/*
-	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
-	*/
-    $("#submit").click(function(){
-
-        if(checkBlank(searchJobs))
-        {
-            blankErrorMsg(searchJobs,errorSearchJobs);
-		}
-		
-		// Perform the following when the above VALIDATIONS are PASSED.
-        else
-        {
-
-			var searchUsersVal=$("#searchUsers").val();
-			dataString = 'searchUsers=' + searchUsersVal;
-            $.ajax({
-            type:"POST",
-            url:"./users-search-results",
-            data:dataString,
-            cache:false
-        	});
-    	}
-    	return false;
-	}); // End of Validation for Search jobs results
-};
-	
 	
 /* 
 	Update Profile Validation

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,41 +53,49 @@
                     <div class="col-lg-10 col-xs-12">
                         <div class="row">
                         	<div class="col">
-                        		<img src="./img/ivan-chia.jpg" alt="profile" class="img-fluid rounded-circle">
-                        	</div>
+                        		<img src="./img/users.png" alt="profile" class="rounded-circle profile">
+                        	</div> <!-- endOfCol : Image -->
                       	    <div class="col">
-                        		<p class="font-weight-bold" id="name">Ivan Chia</p>
+                        		<p class="font-weight-bold" id="name"><s:property value="user.firstName" /> <s:property value="user.lastName" /></p>
                         		<p>
                         		   <i class="fas fa-briefcase"></i> 
-                        		   <span id="job-title"> Software Engineer</span> @
-                        		   <span id="company-name"> Ignenious Lab</span>
+                        		   <span id="job-title"><s:property value="user.currentJob" /></span> @
+                        		   <span id="company-name"> <s:property value="user.currentCompany" /></span>
                         		</p>
                         		<p>
                         		   <i class="fas fa-location-arrow"></i>
-                        		   <span id="city"> Kuala Lumpur</span>
+                        		   <span id="city"> <s:property value="user.city" /></span>
+                        		   <span id="country">, <s:property value="user.country" /></span>
                         		</p>
                         		<p>
                         		   <i class="fab fa-whatsapp"></i>
-                        		   <span id="contactNo"> +60173541232</span>
+                        		   <span id="contactNo"> <span id="city"> <s:property value="user.contactNo" /></span></span>
                         		</p>
-                        	</div>
-                        </div>  <!-- Profile -->
+                        	</div>  <!-- endOfCol : Profile Update -->
+                        </div>  <!-- End of row: Profile -->
                         
-                        <!-- Card: Biography -->
-                        <div class="card">
+                        <!-- Card: Skills -->
+                        <div class="card mt-4">
                             <div class="card-body">
-                                <h3 class="card-title text-uppercase">biography</h3>
+                                <h3 class="card-title text-uppercase">Skills</h3>
                                 <p class="card-text">
-									"A techie who code as his game." <br>
-									Hi I am Ivan Chia. I have 5 years of experience in tech industry as a programmer.
-									Currently working as a software engineer at Ignenious Lab.  <br><br>
-									I love playing ping pong whenver I am free.
+									<span id="skills"> <s:property value="user.skills" /></span>
                                 </p>
                             </div>
                         </div>
                         <!-- end of card -->
-
- 
+                        
+                        <!-- Card: Biography -->
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h3 class="card-title text-uppercase">biography</h3>
+                                <p class="card-text">
+									<span id="biography"> <s:property value="user.biography" /></span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- end of card -->
+                        
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
                 
