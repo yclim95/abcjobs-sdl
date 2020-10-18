@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,9 +41,6 @@
 							  </li>
 							  <li class="nav-item">
 							    <a class="nav-link" href="./users"><i class="fas fa-user-plus"></i> Networks</a>
-							  </li>
-							  <li class="nav-item">
-							    <a class="nav-link" href="./jobs"><i class="fas fa-briefcase"></i> Jobs</a>
 							  </li>
 							  <li class="nav-item">
 							    <a class="nav-link" href="./profile"><i class="fas fa-user"></i> Profile</a>

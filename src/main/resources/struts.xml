@@ -26,8 +26,8 @@
             <result>/jsp/login.jsp</result>
         </action>
         
-        <action name="home-user">
-            <result>/jsp/home.jsp</result>
+        <action name="home-user" class="abcjobs.action.HomeAction" method="execute">
+            <result name="home">/jsp/home.jsp</result>
         </action>
         
         <action name="home" class="abcjobs.action.LoginAction" method="execute">

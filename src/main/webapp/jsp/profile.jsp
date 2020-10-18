@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,13 +38,10 @@
 						<nav class="navbar vertical-menu">
 							<ul class="nav flex-column">
 							  <li class="nav-item">
-							    <a class="nav-link" href="./home"><i class="fas fa-home"></i> Home</a>
+							    <a class="nav-link" href="./home-user"><i class="fas fa-home"></i> Home</a>
 							  </li>
 							  <li class="nav-item">
 							    <a class="nav-link" href="./users"><i class="fas fa-user-plus"></i> Networks</a>
-							  </li>
-							  <li class="nav-item">
-							    <a class="nav-link" href="./jobs"><i class="fas fa-briefcase"></i> Jobs</a>
 							  </li>
 							  <li class="nav-item">
 							    <a class="nav-link active disabled"><i class="fas fa-user"></i> Profile</a>
@@ -53,48 +51,47 @@
                 	</div> <!-- end of col -->
                 	
                     <div class="col-lg-10 col-xs-12">
+                    <s:iterator value="userList">
                         <div class="row">
                         	<div class="col">
                         		<img src="./img/YC-Lim.jpg" alt="profile" class="img-fluid rounded-circle">
-                        	</div>
+                        	</div> <!-- endOfCol : Image -->
                       	    <div class="col">
                       	    	<div class="text-right">
                         			<a href="./profile-update">
                         				<button type="submit" class="form-control-submit-button-wdefault mb-2">Update Profile</button>
                         			</a>
                        		 	</div>
-                        		<p class="font-weight-bold" id="name">YC Lim</p>
+                        		<p class="font-weight-bold" id="name"><s:property value="firstName" /> <s:property value="lastName" /></p>
                         		<p>
                         		   <i class="fas fa-briefcase"></i> 
-                        		   <span id="job-title"> Full Stack Developer</span> @
-                        		   <span id="company-name"> CarLab</span>
+                        		   <span id="job-title"><s:property value="currentJob" /></span> @
+                        		   <span id="company-name"> <s:property value="currentCompany" /></span>
                         		</p>
                         		<p>
                         		   <i class="fas fa-location-arrow"></i>
-                        		   <span id="city"> Selangor</span>
+                        		   <span id="city"> <s:property value="city" /></span>
+                        		   <span id="country">, <s:property value="country" /></span>
                         		</p>
                         		<p>
                         		   <i class="fab fa-whatsapp"></i>
-                        		   <span id="contactNo"> +60176709532</span>
+                        		   <span id="contactNo"> <span id="city"> <s:property value="contactNo" /></span></span>
                         		</p>
-                        	</div>
-                        </div>  <!-- Profile -->
+                        	</div>  <!-- endOfCol : Profile Update -->
+                        </div>  <!-- End of row: Profile -->
                         
                         <!-- Card: Biography -->
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title text-uppercase">biography</h3>
                                 <p class="card-text">
-									"A techie who code as his game." <br>
-									Hi I am YC Lim. I have 5 years of experience in tech industry as a programmer.
-									Currently working as a full stack developer at Carlab. <br><br>
-									I love read comic (manga, manhua) and web novel whenver I am free.
+									<span id="biography"> <s:property value="biography" /></span>
                                 </p>
                             </div>
                         </div>
                         <!-- end of card -->
-
- 
+                        
+                        </s:iterator> <!-- end Of Iterator User List -->
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
                 

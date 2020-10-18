@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import abcjobs.model.User;
 import abcjobs.model.UserAccount;
@@ -67,6 +69,45 @@ public class UserDAO {
 		return exist;
 	}
 	
+	public String getFirstName(String email) {
+		String firstName = "";
+		int userID = 0;
+		
+		Connection con = Database.getConnection();
+		ResultSet resultSet = null;
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from userAccount where email =?");
+			statement.setString(1,email);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				System.out.println ("userID:" + resultSet.getInt("userID"));
+				userID = resultSet.getInt("userID");;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	
+		
+		ResultSet numOfRecord = null;
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from user where userID =?");
+			statement.setInt(1,userID);
+			numOfRecord = statement.executeQuery();
+			
+			while (numOfRecord.next()) {
+				firstName = numOfRecord.getString("firstName");
+			}
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return firstName;
+	}
+	
 	public int resetPassword(String email, String password) throws SQLException {
 			Connection con = Database.getConnection();
 			int result = 0;
@@ -81,6 +122,58 @@ public class UserDAO {
 		}
 		
 		return result;
+	}
+	
+	public List<User> getUserProfile(String email){
+		ResultSet resultSet = null;
+		List<User> userList = null;
+		Connection con = Database.getConnection();
+		ResultSet lastIDQuery = null;
+		int userID = 0;
+		
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from userAccount where email=?");
+			statement.setString(1,email);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				System.out.println ("userID:" + resultSet.getInt("userID"));
+				userID = resultSet.getInt("userID");;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	
+		
+		ResultSet numOfRecord = null;
+		try {
+			PreparedStatement statement = con.prepareStatement("SELECT * from user where userID =?");
+			statement.setInt(1,userID);
+			numOfRecord = statement.executeQuery();
+			userList = new ArrayList<User>();
+			User user;
+			
+			while (numOfRecord.next()) {
+				user = new User();
+				user.setFirstName(numOfRecord.getString("firstName"));
+				user.setLastName(numOfRecord.getString("lastName"));
+				user.setCurrentJob(numOfRecord.getString("currentJob"));
+				user.setCurrentCompany(numOfRecord.getString("currentCompany"));
+				user.setContactNo(numOfRecord.getString("contactNo"));
+				user.setCity(numOfRecord.getString("city"));
+				user.setCountry(numOfRecord.getString("country"));
+				user.setSkills(numOfRecord.getString("skills"));
+				user.setBiography(numOfRecord.getString("biography"));
+				
+				userList.add(user); // Add data to populate 
+			}
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userList;
 	}
 	
 	public int updateUserProfile(String firstName, String lastName, String email, String password,
