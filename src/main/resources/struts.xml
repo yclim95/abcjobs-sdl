@@ -34,6 +34,10 @@
             <result name="home">/jsp/home.jsp</result>
         </action>
         
+         <action name="home-admin" class="abcjobs.action.AdminHomeAction" method="execute">
+            <result name="admin">/jsp/admin.jsp</result>
+        </action>
+        
         <action name="home" class="abcjobs.action.LoginAction" method="execute">
         	<result name="success-user">/jsp/home.jsp</result>
         	<result name="success-admin">/jsp/ban-user.jsp</result>
@@ -81,6 +85,11 @@
         
          <action name="public-profile" class="abcjobs.action.PublicProfileAction" method="execute">
             <result name="public-profile">/jsp/public-profile.jsp</result>
+        </action>
+        
+        <action name="ban-user" class="abcjobs.action.BanUserAction" method="execute">
+            <result name="success">/jsp/ban-user.jsp</result>
+            <result name="error">/jsp/ban-user.jsp</result>
         </action>
     </package>
 

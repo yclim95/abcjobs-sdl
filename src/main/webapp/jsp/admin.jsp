@@ -18,7 +18,7 @@
 	<meta property="og:title" content="ABC JOBS -  Your doorstep to start your career and networking platform"/> <!-- title shown in the actual shared post -->
 	<meta property="og:description" content="ABC Jobs is a platform to start your career and professional networking" /> <!-- description shown in the actual shared post -->
 	<meta property="og:type" content="article" />
-	<title>ABC JOBS | BAN USER</title>
+	<title>ABC JOBS | ADMIN</title>
 
     <!-- Styles -->
     <%@ include file="./head.jsp" %>  
@@ -44,10 +44,6 @@
                 	</div> <!-- end of col -->
                 	
                     <div class="col-lg-10 col-xs-12">
-             	      <div class="card card-body vertical">	            	
-	            		<p><s:property value="message"/> </p>
-            		 </div> <!--  Card  -->
-
                         <table class="table table-striped">
 							  <thead>
 							    <tr>
