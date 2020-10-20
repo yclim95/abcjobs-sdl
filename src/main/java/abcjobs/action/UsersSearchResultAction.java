@@ -54,28 +54,37 @@ public class UsersSearchResultAction extends ActionSupport{
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		HttpServletRequest request=ServletActionContext.getRequest();  
+		// Get Request from Servlet Action
+		HttpServletRequest request=ServletActionContext.getRequest();
+		// Request for Session
 		HttpSession session=request.getSession();  
+		// Get First Name to display at navigation menu
 		firstName = (String)session.getAttribute("firstName");
+		// Get log-in user email
+		String email = (String)session.getAttribute("email");
+		// Create userDAO object 
 		UserDAO userDAO = new UserDAO();
-		String result = "";
+		String result = ""; // Create result to store text for struts routing
 		
-		System.out.println(searchUsers);
+		// searchUsers is data get from search user form
+		System.out.println(searchUsers); // Used to check if searchUsers is correct
 		
-		userList = userDAO.getListOfUserByCriteria(searchUsers);
+		// Return back a list of user(s) that meet certain criteria
+		userList = userDAO.getListOfUserByCriteria(searchUsers,email);
+		// If User List is not empty
 		if (userList != null)
 		{
-			firstName = (String)session.getAttribute("firstName");
+			// Display message to let user know how many records that match criteria
 			message = userList.size() + " record match: " + searchUsers;
 			result = "success";
 		}
 		else {
 			result = "error";
+			// Display message to let user know that none meet search criteria
 			message = "No user meet your search criteria.";
 		}
 
-		return result;
+		return result; //Result return to struts.xml
 	}
 
 }

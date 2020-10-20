@@ -28,10 +28,10 @@
 	
 	
         <!-- Users -->
-        <div id="course-section" class="card-users">
+        <div id="user-section" class="card-users">
             <div class="container">
             	<div class="row pb-3">
-           			<form class="form-inline search-user">
+           			<form class="form-inline search-user" ACTION="users-search-results" METHOD="post">
             	
             		<div class="col-xs-8">
 						  <label class="sr-only" for="inlineFormInputGroupUsername2">Search users</label>
@@ -43,7 +43,7 @@
 						      </div>
 						    </div>
 						    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Search users"
-						    data-toggle="tooltip" data-placement="bottom" title="Name, city, country & company name">						    
+						    data-toggle="tooltip" data-placement="bottom" title="Name, city, country & company name" name="searchUsers">						    
 						  </div>
 
             		</div> <!-- end of col -->
@@ -65,10 +65,7 @@
 							    <a class="nav-link" href="./home"><i class="fas fa-home"></i> Home</a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link active disabled"><i class="fas fa-user-plus"></i> Networks</a>
-							  </li>
-							  <li class="nav-item">
-							    <a class="nav-link" href="./jobs"><i class="fas fa-briefcase"></i> Jobs</a>
+							    <a class="nav-link active" href="./users"><i class="fas fa-user-plus"></i> Networks</a>
 							  </li>
 							  <li class="nav-item">
 							    <a class="nav-link" href="./profile"><i class="fas fa-user"></i> Profile</a>

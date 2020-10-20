@@ -45,25 +45,30 @@ public class UsersAction extends ActionSupport{
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		HttpServletRequest request=ServletActionContext.getRequest();  
+		// Get Request from Servlet Action
+		HttpServletRequest request=ServletActionContext.getRequest(); 
+		// Request for Session
 		HttpSession session=request.getSession();  
-		firstName = (String)session.getAttribute("firstName");
+		// Get First Name to display at navigation menu
+		firstName = (String)session.getAttribute("firstName"); 
+		// Create userDAO object 
 		UserDAO userDAO = new UserDAO();
-		String result = "";
+		String result = ""; // Create result to store text for struts routing
 		
+		// Return back a list of user(s) that is not the currentLogIn user
 		userList = userDAO.getListOfUser((String)session.getAttribute("email"));
+		
+		// If User List is not empty
 		if (userList != null)
 		{
-			firstName = (String)session.getAttribute("firstName");
 			result = "users";
 		}
 		else {
 			result = "users";
-			message = "No other registered users currently";
+			message = "No other registered users currently"; // Message to display
 		}
 
-		return result;
+		return result; //Result return to struts.xml
 	}
 
 }

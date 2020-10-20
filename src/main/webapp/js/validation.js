@@ -29,11 +29,6 @@ function checkPath(pathname){
 		searchUsersValidation();
 	}
 	
-		else if (pathname == "/abcjobs/jobs")
-	{
-		searchJobsValidation();
-	}
-	
 		else if (pathname == "/abcjobs/profile-update")
 	{
 		updateProfileValidation();
@@ -70,8 +65,16 @@ Table Of Contents:
 10  Print Phone Length Error Message 
 11  Check for Password Length 
 12. Print Password Length Error Messsage
-13. Print Random Message
-14. Validation [Validate when an event fire || onSubmit ] 
+13. Check if the value of password = confirmed password
+14. Check Country
+15. Print Random Message
+15. Print Random Message
+16. Register Validation [Validate when an event fire || onSubmit ] 
+17. Login Validation [Validate when an event fire || onSubmit ] 
+18. Search users Validation [Validate when an event fire || onSubmit ] 
+19. Update Profile Page Validation [Validate when an event fire || onSubmit ] 
+20. Forget Password Validation [Validate when an event fire || onSubmit ] 
+21. Reset Validation [Validate when an event fire || onSubmit ] 
 */
 
 
@@ -203,14 +206,25 @@ function checkConfirmedPassword(eID1, eID2){
 	return false;
 }
 
-// 14. Print Random Message
+// 14. Check Country 
+function checkCountry(eID){
+	var value = document.getElementById(eID).value;
+	
+	if (value == "Malaysia" || value == "Mymmar" || value == "India" ||
+	value == "Indonesia" || value == "Singapore'" || value == "China")
+		return true;
+		
+	return false;
+}
+
+// 15. Print Random Message
 function randomeErrorMsg(errID,msg){
 	document.getElementById(errID).innerHTML = msg;
 }
 
 
 /* 
-	Register Validation
+	16. Register Validation
 */
 function registerValidation(){
 	var fname= 'fname';
@@ -298,6 +312,7 @@ function registerValidation(){
 			randomeErrorMsg(errorLName,"");
 		}
 	});
+	
 
 
 		/*
@@ -346,7 +361,7 @@ function registerValidation(){
 	
 	
 /* 
-	Login Validation
+	17. Login Validation
 */
 function loginValidation(){
 	var email= 'email';
@@ -397,7 +412,7 @@ function loginValidation(){
 
 
 	/*
-	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
+	HAPPEN ONCE USER CLICK SUBMIT BUTTON - LOGIN
 	*/
     $("#submit").click(function(){
 
@@ -432,7 +447,7 @@ function loginValidation(){
 
 
 /* 
-	Search users Validation
+	18. Search users Validation
 */
 function searchUsersValidation(){
 	var searchUsers= 'searchUsers';
@@ -456,7 +471,7 @@ function searchUsersValidation(){
 
 
 	/*
-	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
+	HAPPEN ONCE USER CLICK SUBMIT BUTTON - SEARCH USERS RESULT
 	*/
     $("#submit").click(function(){
 
@@ -477,7 +492,7 @@ function searchUsersValidation(){
 
 	
 /* 
-	Update Profile Validation
+	19. Update Profile Validation
 */
 function updateProfileValidation(){
 	var fname= 'fname';
@@ -603,14 +618,14 @@ function updateProfileValidation(){
 
 
 	/*
-	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
+	HAPPEN ONCE USER CLICK SUBMIT BUTTON - UPDATE PROFILE PAGE
 	*/
     $("#submit").click(function(event){
 
 
         if(checkBlank(fname) || checkBlank(lname) || checkBlank(email) || checkBlank(password) ||
         checkBlank(currentJob) ||checkBlank(currentCompany) || checkBlank(contactNo) || checkBlank(city) ||
-        checkBlank(country))
+        checkBlank(country) || !checkCountry(country))
         {
         	event.preventDefault();
            blankErrorMsg(fname,errorFName);
@@ -633,9 +648,10 @@ function updateProfileValidation(){
                 event.preventDefault();
             }
             
-            if (!checkPasswordLength(confirmedPassword)){
-                passwordLengthErrorMsg(errorCnfPassword);
-               	event.preventDefault();
+            
+            if(!checkCountry(country)){
+            	randomeErrorMsg(errorCountry,"only can enter Malaysia, Mymmar, India, Indonesia, Singapore, China");
+            	event.preventDefault();
             }
   
 		}
@@ -648,7 +664,7 @@ function updateProfileValidation(){
 
 
 /* 
-	Forget Validation
+	20. Forget Validation
 */
 function forgetPasswordValidation(){
 	var email= 'email';
@@ -679,7 +695,7 @@ function forgetPasswordValidation(){
 
 
 		/*
-	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
+	HAPPEN ONCE USER CLICK SUBMIT BUTTON - FORGET PASSWORD
 	*/
     $("#submit").click(function(event){
 
@@ -702,6 +718,9 @@ function forgetPasswordValidation(){
 };
 
 
+/* 
+	21. Reset Password Validation
+*/
 function resetPasswordValidation(){
 	var password= 'password';
 	var confirmedPassword = "confirmed-password";
@@ -750,7 +769,7 @@ function resetPasswordValidation(){
 
 
 		/*
-	HAPPEN ONCE USER CLICK SUBMIT BUTTON - Register
+	HAPPEN ONCE USER CLICK SUBMIT BUTTON - RESET PASSWORD
 	*/
     $("#submit").click(function(event){
 
@@ -781,5 +800,5 @@ function resetPasswordValidation(){
 		window.location.replace('reset-password-status');
 		}
 		
-	}); // End of Validation for register
+	}); // End of Validation for Reset Password
 };

@@ -62,73 +62,91 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println("Login Action");
+		// Create result to store text for struts routing
 		String result = "";
+		// Create ResultSet to store result for validateLoginCredential()
 		ResultSet numOfRecord = null;
+		// Create String to store Grant Level
 		String grantLevel = "";
+		// Create String to store first name of current login user
 		String firstName = "";
+		// Create loginDao object 
 		LoginDAO loginDao = new LoginDAO();
+		// Store number of record that match login credential given by user with record in database
 		numOfRecord = loginDao.validateLoginCreditial(userAccount.getEmail(), userAccount.getPassword());
+		// Store grant level 'programmer' or 'admin'
 		grantLevel = loginDao.getGrantLevel(userAccount.getEmail(), userAccount.getPassword());
-		System.out.println("Output: " + grantLevel);
+		
+		// If there is record
 		if (numOfRecord.next())
 		{
-			System.out.println("Output: " + grantLevel);
+			// Create userDAO object 
 			UserDAO userDAO = new UserDAO();
+			// Retrieve first name based on user account email
 			firstName = userDAO.getFirstName(userAccount.getEmail());
-			AccountCredential.setFirstName(firstName);
-			AccountCredential.setEmail(userAccount.getEmail());
+			// Set email to loginCredential (Session Map)
 			loginCredential.put("email", userAccount.getEmail());
+			// Set first name to loginCredential (Session Map)
 			loginCredential.put("firstName", firstName);
 			
+			// If this user is a programmer
 			if (grantLevel.equals("programmer")) 
 			{
-				result =  "success-user";
+				result =  "success-user"; //Result return to struts.xml
+				// Get Request from Servlet Action
 				HttpServletRequest request=ServletActionContext.getRequest();  
+				// Request for Session
 				HttpSession session=request.getSession();  
+				// Get First Name to display at navigation menu
 				firstName = (String)session.getAttribute("firstName");
 
 			}
+			// If this user is an admin
 			else 
 			{
-				result =  "success-admin";
+				result =  "success-admin"; //Result return to struts.xml
+				// Get Request from Servlet Action
 				HttpServletRequest request=ServletActionContext.getRequest();  
+				// Request for Session
 				HttpSession session=request.getSession();  
+				// Get First Name to display at navigation menu
 				firstName = (String)session.getAttribute("firstName");
+				// Create adminDao object 
 				AdminDAO adminDao = new AdminDAO();
+				// Retrieve list of registered users
 				userList = adminDao.getListOfUsers();
 				
+				// if userList retrieved is != null
 				if (userList != null) {
 				}
 				else {
-					message = "No registered user currently";
+					// Display error message if no user currently registered
+					message = "No registered user currently"; 
 				}
 			}
 				
 		}
 
 		else
-			result = "error";
+			result = "error"; //Result return to struts.xml
 			
-		
-		System.out.println("Result: " + result);
-		
-		return result;
+				
+		return result; //Result return to struts.xml
 	}
 
 	@Override
 	public void setSession(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		// Set login credential As Session Map
 		loginCredential = (SessionMap)map;
 	}
 		
 	public String logout() {
-		if (loginCredential != null) {
-			loginCredential.invalidate();
+		if (loginCredential != null) { // Login Credential Session Map != null
+			loginCredential.invalidate(); //Invalidate the http session.
 		}
 		
-		return "logout";
+		return "logout"; // Result return to struts.xml
 	}
 
 }

@@ -6,8 +6,7 @@ public class ThankYouAction extends ActionSupport{
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		return "thankyou";
+		return "thankyou"; //Result return to struts.xml
 	}
 
 }

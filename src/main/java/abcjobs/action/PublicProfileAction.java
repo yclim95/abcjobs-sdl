@@ -33,19 +33,25 @@ public class PublicProfileAction extends ActionSupport{
 	}
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
+		// Create result to store text for struts routing
 		String result="";
+		// Create userDAO object
 		UserDAO userDao = new UserDAO();
+		// Get user record from user database by userID
 		user = userDao.getUserProfileByUserID(user.getUserID());
+		// Get Request from Servlet Action
 		HttpServletRequest request=ServletActionContext.getRequest();  
+		// Request for Session
 		HttpSession session=request.getSession();  
 		
+		// if retrieve user record != null
 		if (user != null)
 		{
+			// Get First Name to display at navigation menu
 			firstName = (String)session.getAttribute("firstName");
-			result = "public-profile";
+			result = "public-profile"; //Result return to struts.xml
 		}
-		return result;
+		return result; //Result return to struts.xml
 	}
 	
 }

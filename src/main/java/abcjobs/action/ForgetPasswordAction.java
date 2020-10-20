@@ -19,23 +19,28 @@ public class ForgetPasswordAction extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub\
 		System.out.println("Forget Password Action");
+		// Create result to store text for struts routing
 		String result = "";
-		boolean emailExist = false;
+		boolean emailExist = false; // Set email to does not exist
+		// Create userDAO object
 		UserDAO userDao = new UserDAO();
-		if (userAccount != null)
-			emailExist = userDao.emailExist(userAccount.getEmail());
 		
+		// userAccount object is not EMPTY (Get from Forget Password Page Form input)
+		if (userAccount != null)
+			// Return (True / False) : Check if email exist from database
+			emailExist = userDao.emailExist(userAccount.getEmail());
+		// If email Exist
 		if (emailExist)
 		{
 			result = "success";
+			// Set email for reset password purpose
 			AccountCredential.setEmail(userAccount.getEmail());
 		}
 		else
 			result = "error";
 		
-		return result;
+		return result; // Result return to struts.xml
 
 	}
 	

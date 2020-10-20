@@ -36,17 +36,20 @@ public class RegisterAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		System.out.println("Register Action");
+		// Create result to store text for struts routing
 		String result = "";
-		UserDAO userDao=new UserDAO();
+		UserDAO userDao=new UserDAO(); // Create userDAO
+		// user.getFirstName() -> data from posted form input
+		// Return (True or False) - Check if able to successfully register user account
 		boolean registrationValid = userDao.addUserAccount(user.getFirstName(), user.getLastName(),
 				userAccount.getEmail(), userAccount.getPassword());
 		
-		if (registrationValid)
+		if (registrationValid) // If successful
 			result = "success";
 		else
 			result = "error";
 		
-		return result;
+		return result; //Result return to struts.xml
 	}
 	
 }

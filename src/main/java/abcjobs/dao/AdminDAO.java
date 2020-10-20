@@ -10,6 +10,8 @@ import abcjobs.Database;
 import abcjobs.model.UserManagement;
 
 public class AdminDAO {
+	
+	// Get list of user records (user & user account) where grant level = "programmer"
 	public List<UserManagement> getListOfUsers(){
 		List<UserManagement> userList = null;
 		Connection con = Database.getConnection();
@@ -31,16 +33,17 @@ public class AdminDAO {
 				user.setLastName(numOfRecord.getString("user.lastName"));
 				user.setEmail(numOfRecord.getString("useraccount.email"));;
 				
-				userList.add(user); // Add data to populate 
+				userList.add(user); // Add data to list for populating 
 			}
 
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return userList;
+		return userList; // Get list of user records (user & user account) where grant level = "programmer"
 	}
 	
+	// Ban or Remove user record based on userID
 	public int banUserByUserID (int userID) {
 		int result = 0;
 		Connection con = Database.getConnection();
@@ -51,6 +54,6 @@ public class AdminDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+		return result; // Ban or Remove user record based on userID
 	}
 }

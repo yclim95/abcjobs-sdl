@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse navigation" id="navbarsExampleDefault">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="btn nav-link page-scroll" href="./home">HOME <span class="sr-only">(current)</span></a>
+                    <a class="btn nav-link page-scroll" href="./home-admin">HOME <span class="sr-only">(current)</span></a>
                 </li>
               
                 <li class="nav-item">

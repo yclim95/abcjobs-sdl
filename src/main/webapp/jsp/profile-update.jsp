@@ -141,7 +141,8 @@
 	                        	<div class="col-sm-10">
    		                            <s:textfield cssClass="form-control" name = "user.country" id = "country" 
    		                            data-toggle="tooltip" data-placement="bottom"
-	                            title = "Please fill in" value = "%{user.country}" />
+	                            title = "Please fill in either one of these country [Malaysia,
+	                            Mymmar, India, Indonesia, Singapore, China]" value = "%{user.country}" />
 	                        	</div>                  
 	                            <div class="help-block with-errors" id="error-country"></div>
 	                        </div>

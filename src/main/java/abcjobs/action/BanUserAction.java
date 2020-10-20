@@ -51,32 +51,60 @@ public class BanUserAction extends ActionSupport{
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public String getPage() throws Exception{
+		// Get Request from Servlet Action
+		HttpServletRequest request=ServletActionContext.getRequest(); 
+		// Request for Session
+		HttpSession session=request.getSession();
+		// Get First Name to display at navigation menu
+		firstName = (String)session.getAttribute("firstName");
+		String result = ""; // Create result to store text for struts routing
+		
+		// Create adminDao object 
+		AdminDAO adminDao = new AdminDAO();
+		// Retrieve all users (Programmer) list
+		userList = adminDao.getListOfUsers();
+		
+		// List of users retrieved is != null
+		if (userList != null) {
+			result = "success";
+		}
+		else {
+			result = "error";
+			message = "No user currently registered";
+		}
+		return result; // Result return to struts.xml
+	}
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		HttpServletRequest request=ServletActionContext.getRequest();  
-		HttpSession session=request.getSession();  
+		// Get Request from Servlet Action
+		HttpServletRequest request=ServletActionContext.getRequest(); 
+		// Request for Session
+		HttpSession session=request.getSession();
+		// Get First Name to display at navigation menu
 		firstName = (String)session.getAttribute("firstName");
-		String result = "";
-		int numOfRecord = 0;
+		String result = ""; // Create result to store text for struts routing
+		int numOfRecord = 0; // Number of Record
 		
+		// Create adminDao object 
 		AdminDAO adminDao = new AdminDAO();
+		// Return how many user record is deleted
 		numOfRecord = adminDao.banUserByUserID(user.getUserID());
 		userList = adminDao.getListOfUsers();
 		
+		
+		// If number of user record is removed ! = 0 And List of users retrieved is != null
 		if (numOfRecord != 0 && userList != null) {
 			result = "success";
 			message = "Successfully Ban user";
 		}
-		else if (userList != null){
-			result = "success";
-			message = "No registered user records";
-		}else {
+		else {
 			result = "error";
-			message = "Fail to Ban user";
+			message = "Fail to Ban user and No user currently registered";
 		}
-		return result;
+		return result; // Result return to struts.xml
 	}
 	
 }

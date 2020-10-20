@@ -23,11 +23,13 @@ public class HomeAction extends ActionSupport{
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		HttpServletRequest request=ServletActionContext.getRequest();  
+		// Get Request from Servlet Action
+		HttpServletRequest request=ServletActionContext.getRequest();
+		// Request for Session
 		HttpSession session=request.getSession();  
+		// Get First Name to display at navigation menu
 		firstName = (String)session.getAttribute("firstName");
-		return "home";
+		return "home"; // Result return to struts.xml
 	}
 
 }

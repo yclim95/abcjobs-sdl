@@ -19,18 +19,23 @@ public class ResetPasswordAction extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println("Reset Password Action");
+		// Create result to store text for struts routing
 		String result = "";
+		// Retrieve email record (Get from forget password page submission)
 		String email = AccountCredential.getEmail();
+		// Create userDAO object 
 		UserDAO userDao = new UserDAO();
 		
+		// Retrieve number of records that successfully reset the password
+		// (Reset Password for targeted account by email)
 		int numOfRecord = userDao.resetPassword(email, userAccount.getPassword());
 		
+		// Number of records that successfully reset the password != 0 (Successfully reseted password)
 		if (numOfRecord != 0)
-			result =  "success";
+			result =  "success"; //Result return to struts.xml
 		
-		return result;
+		return result; //Result return to struts.xml
 	}
 
 }

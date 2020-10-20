@@ -29,7 +29,7 @@
 	
 	
         <!-- Users -->
-        <div id="course-section" class="card-users">
+        <div id="user-section" class="card-users">
             <div class="container">
             	<div class="row pb-3">
            			<form class="form-inline search-user" ACTION="users-search-results" METHOD="post">
@@ -116,7 +116,9 @@
                         </s:iterator> <!--  End of displaying users list loop -->
                         </s:if> <!-- End of If for userList -->
                         <s:else>
-                        	<s:property value="message" />
+                        	 <p>
+                        	<span><s:property value="message" /></span>	
+                        	</p>
                         </s:else> <!-- If no other users -->
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->

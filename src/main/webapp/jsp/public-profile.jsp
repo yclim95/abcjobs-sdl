@@ -44,7 +44,7 @@
 							    <a class="nav-link" href="./users"><i class="fas fa-user-plus"></i> Networks</a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link active disabled"><i class="fas fa-user"></i> Profile</a>
+							    <a class="nav-link active" href="./profile"><i class="fas fa-user"></i> Profile</a>
 							  </li>
 							</ul>
 						</nav> <!-- Vertical menu -->

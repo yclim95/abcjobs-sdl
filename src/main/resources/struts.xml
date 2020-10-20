@@ -34,10 +34,6 @@
             <result name="home">/jsp/home.jsp</result>
         </action>
         
-         <action name="home-admin" class="abcjobs.action.AdminHomeAction" method="execute">
-            <result name="admin">/jsp/admin.jsp</result>
-        </action>
-        
         <action name="home" class="abcjobs.action.LoginAction" method="execute">
         	<result name="success-user">/jsp/home.jsp</result>
         	<result name="success-admin">/jsp/ban-user.jsp</result>
@@ -67,8 +63,6 @@
             <result name="error">/jsp/users-search-results.jsp</result>
         </action>
         
-        
-        
          <action name="profile" class="abcjobs.action.ProfileAction" method="execute">
             <result name="profile">/jsp/profile.jsp</result>
         </action>
@@ -77,7 +71,6 @@
             <result name="success">/jsp/profile-update.jsp</result>
         </action>
         
-        
         <action name="profile-update-process" class="abcjobs.action.ProfileUpdateAction" method="execute">
             <result name="success">/jsp/profile-update.jsp</result>
             <result name="error">/jsp/profile-update.jsp</result>
@@ -85,6 +78,11 @@
         
          <action name="public-profile" class="abcjobs.action.PublicProfileAction" method="execute">
             <result name="public-profile">/jsp/public-profile.jsp</result>
+        </action>
+        
+         <action name="home-admin" class="abcjobs.action.BanUserAction" method="getPage">
+            <result name="success">/jsp/ban-user.jsp</result>
+            <result name="error">/jsp/ban-user.jsp</result>
         </action>
         
         <action name="ban-user" class="abcjobs.action.BanUserAction" method="execute">

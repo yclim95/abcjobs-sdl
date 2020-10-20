@@ -34,21 +34,26 @@ public class ProfileAction extends ActionSupport{
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
+		// Create userDAO object 
 		UserDAO userDAO = new UserDAO();
+		// Create result to store text for struts routing
 		String result = "";
+		// Get Request from Servlet Action
 		HttpServletRequest request=ServletActionContext.getRequest();  
+		// Request for Session
 		HttpSession session=request.getSession();  
-		
+		// Retrieve detail of user profile (by current login user email) 
 		userList = userDAO.getUserProfile((String)session.getAttribute("email"));
 		
+		// If list of user details != null
 		if (userList != null)
 		{
+			// Get First Name to display at navigation menu
 			firstName = (String)session.getAttribute("firstName");
-			result = "profile";
+			result = "profile"; //Result return to struts.xml
 		}
-		
-		return result;
+		 
+		return result; //Result return to struts.xml
 	}
 
 }
